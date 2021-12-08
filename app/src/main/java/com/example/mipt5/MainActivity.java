@@ -32,15 +32,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
 {
 
-    Spinner convertFromDropdownSpinner, convertToDropdownSpinner;
-    TextView conversionRateText;
+    TextView convertFromDropdownTextView, convertToDropdownTextView, conversionRateText;
     EditText amountToConvert;
     ArrayList<String> arrayList;
     Dialog fromDialog;
     Dialog toDialog;
     Button convertButton;
     String convertFromValue, convertToValue, conversionValue;
-    String[] country = {}; //TODO
+    String[] country = {"AFN", "EUR", "DZD", "USD", "AOA", "XCD", "ARS", "AMD", "AWG","AUD", "AZN","BSD","BHD","BDT","BBD","BYN","BZD", "XOF","BMD","INR","BTN"};
 
 
     @Override
@@ -49,8 +48,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        convertFromDropdownSpinner = findViewById(R.id.convert_from_dropdown_menu);
-        convertToDropdownSpinner = findViewById(R.id.convert_to_dropdown_menu);
+        convertFromDropdownTextView = findViewById(R.id.convert_from_dropdown_menu);
+        convertToDropdownTextView = findViewById(R.id.convert_to_dropdown_menu);
         convertButton = findViewById(R.id.conversionButton);
         conversionRateText = findViewById(R.id.conversionRateText);
         amountToConvert = findViewById(R.id.amountToConvertValueEditText);
@@ -60,7 +59,7 @@ public class MainActivity extends AppCompatActivity
         {
             arrayList.add(i);
         }
-        convertFromDropdownSpinner.setOnItemClickListener(new View.OnClickListener()
+        convertFromDropdownTextView.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id)
                     {
-                        convertFromDropdownSpinner.setText(adapter.getItem(position));
+                        convertFromDropdownTextView.setText(adapter.getItem(position));
                         fromDialog.dismiss();
                         convertFromValue = adapter.getItem(position);
                     }
@@ -110,7 +109,7 @@ public class MainActivity extends AppCompatActivity
 
 
         });
-        convertToDropdownSpinner.setOnItemClickListener(new View.OnClickListener()
+        convertToDropdownTextView.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -151,7 +150,7 @@ public class MainActivity extends AppCompatActivity
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
                     {
-                        convertToDropdownSpinner.setText(adapter.getItem(position));
+                        convertToDropdownTextView.setText(adapter.getItem(position));
                         toDialog.dismiss();
                         convertToValue = adapter.getItem(position);
                     }
@@ -204,7 +203,8 @@ public class MainActivity extends AppCompatActivity
     public static  double round(double value, int places)
     {
         if(places<0) throw new IllegalArgumentException();
-        BigDecimal bd = BigDecimal.valueOf(value);bd = bd.setScale(places, RoundingMode.HALF_UP);
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
 }

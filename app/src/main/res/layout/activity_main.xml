@@ -74,7 +74,7 @@
             android:layout_height="wrap_content">
 
 
-            <Spinner
+            <TextView
                 android:id="@+id/convert_from_dropdown_menu"
                 android:layout_width="147dp"
                 android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                 android:layout_marginEnd="30dp" />
                />
 
-            <Spinner
+            <TextView
                 android:id="@+id/convert_to_dropdown_menu"
                 android:layout_width="147dp"
                 android:layout_height="wrap_content"
