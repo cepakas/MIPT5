@@ -1,4 +1,4 @@
 # MIPT5
-vienintele vieta kur neveikia kodas: 
+Vieta kur neveikia kodas: 
 "convertFromDropdownSpinner.setText(adapter.getItem(position));"
-Is spinnerio nera galimybes nuskaityti .setText
+Is spinnerio nemoku ir net nera galimybes nuskaityti .setText
